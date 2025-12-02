@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #312e81;
+    /* Indigo-900 */
+    --foreground: #fde047;
+    /* Yellow-300 */
   }
 }
 
+/* Manual dark mode override */
+:root.dark {
+  --background: #312e81;
+  /* Indigo-900 */
+  --foreground: #fde047;
+  /* Yellow-300 */
+}
+
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode gradient */
+body:not(.dark) {
+  background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe, #dbeafe);
+}
+
+/* Dark mode (Starry Night) gradient */
+.dark body {
+  background: radial-gradient(circle at 50% 0%, #4338ca 0%, #312e81 100%);
+  /* Indigo-700 to Indigo-900 */
+}
+
+/* Override specific text colors in dark mode to ensure yellow theme */
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-gray-600,
+.dark .text-gray-500,
+.dark .text-white {
+  color: #fde047;
+  /* Yellow-300 */
+}
+
+.dark .text-gray-400 {
+  color: #fef08a;
+  /* Yellow-200 */
+}
+
+/* Adjust borders in dark mode */
+.dark .border-gray-200,
+.dark .border-gray-700,
+.dark .border-gray-100 {
+  border-color: rgba(253, 224, 71, 0.3);
+  /* Yellow with opacity */
+}
+
+/* Adjust backgrounds in dark mode */
+.dark .bg-white\/50,
+.dark .bg-gray-800\/50 {
+  background-color: rgba(49, 46, 129, 0.6);
+  /* Indigo-900 with opacity */
+}
+
+.dark .bg-gray-900,
+.dark .bg-gray-800 {
+  background-color: #3730a3;
+  /* Indigo-800 */
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-700 {
+  background-color: #4338ca;
+  /* Indigo-700 */
+}
+
+.dark .hover\:bg-gray-700:hover {
+  background-color: rgba(253, 224, 71, 0.1);
 }
