@@ -77,7 +77,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
                 </div>
 
                 <button
-                    onClick={() => toggleTodo(todo.id)}
+                    onClick={() => toggleTodo(todo.id, !todo.completed)}
                     className={clsx(
                         'w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors',
                         todo.completed
@@ -150,7 +150,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
                                 {todo.subtasks.map((subtask) => (
                                     <div key={subtask.id} className="flex items-center gap-2">
                                         <button
-                                            onClick={() => toggleSubtask(todo.id, subtask.id)}
+                                            onClick={() => toggleSubtask(todo.id, subtask.id, !subtask.completed)}
                                             className={clsx(
                                                 'w-4 h-4 rounded border flex items-center justify-center transition-colors',
                                                 subtask.completed
