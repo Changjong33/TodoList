@@ -67,6 +67,9 @@ export default function WeeklyCalendar({
                     const isSelected = isSameDay(day, selectedDate);
                     const isCurrentDay = isToday(day);
                     const count = getTodoCount(day);
+                    const dayOfWeek = day.getDay(); // 0: Sun, 6: Sat
+                    const isSaturday = dayOfWeek === 6;
+                    const isSunday = dayOfWeek === 0;
 
                     return (
                         <button
@@ -76,7 +79,14 @@ export default function WeeklyCalendar({
                                 'flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-200 relative group',
                                 isSelected
                                     ? 'bg-blue-500 text-white shadow-md scale-105'
-                                    : 'hover:bg-gray-100 dark:hover:bg-indigo-800 text-gray-600 dark:text-yellow-300/80',
+                                    : clsx(
+                                        'hover:bg-gray-100 dark:hover:bg-indigo-800',
+                                        isSaturday
+                                            ? 'text-blue-500'
+                                            : isSunday
+                                                ? 'text-red-500'
+                                                : 'text-gray-600 dark:text-yellow-300/80'
+                                    ),
                                 isCurrentDay && !isSelected && 'border-2 border-blue-500'
                             )}
                         >
