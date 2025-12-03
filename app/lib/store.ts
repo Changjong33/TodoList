@@ -14,7 +14,7 @@ interface TodoStore {
     deleteSubtask: (todoId: string, subtaskId: string) => Promise<void>;
 }
 
-const API_URL = 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 export const useTodoStore = create<TodoStore>((set, get) => ({
     todos: [],
