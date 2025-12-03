@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTodoStore } from '@/app/lib/store';
 import Clock from '@/app/components/Clock';
 import WeeklyCalendar from '@/app/components/WeeklyCalendar';
@@ -13,6 +13,11 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [newTodoText, setNewTodoText] = useState('');
   const addTodo = useTodoStore((state) => state.addTodo);
+  const fetchTodos = useTodoStore((state) => state.fetchTodos);
+
+  useEffect(() => {
+    fetchTodos();
+  }, [fetchTodos]);
 
   const handleAddTodo = (e: React.FormEvent) => {
     e.preventDefault();

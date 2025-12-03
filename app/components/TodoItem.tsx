@@ -131,11 +131,11 @@ export default function TodoItem({ todo }: TodoItemProps) {
             <div className="ml-12 mt-2">
                 <button
                     onClick={() => setShowSubtasks(!showSubtasks)}
-                    className="text-xs text-gray-500 dark:text-yellow-300/70 hover:text-blue-500 mb-2 flex items-center gap-1"
+                    className="cursor-pointer text-xs text-gray-500 dark:text-yellow-300/70 hover:text-blue-500 mb-2 flex items-center gap-1"
                 >
                     {todo.subtasks.length > 0
-                        ? `${todo.subtasks.length} subtasks`
-                        : 'Add subtask'}
+                        ? `세부항목 보기 (${todo.subtasks.length})`
+                        : '세부항목 추가하기'}
                 </button>
 
                 <AnimatePresence>
