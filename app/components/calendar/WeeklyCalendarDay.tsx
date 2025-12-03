@@ -27,9 +27,9 @@ export default function WeeklyCalendarDay({
         <button
             onClick={() => onSelect(day)}
             className={clsx(
-                'flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-200 relative group',
+                'flex flex-col items-center justify-center p-3 rounded-xl transition-colors duration-200 relative group',
                 isSelected
-                    ? 'bg-blue-500 text-white shadow-md scale-105'
+                    ? 'bg-blue-500 text-white shadow-md'
                     : clsx(
                           'hover:bg-gray-100 dark:hover:bg-indigo-800',
                           isSaturday
@@ -37,8 +37,7 @@ export default function WeeklyCalendarDay({
                               : isSunday
                                 ? 'text-red-500'
                                 : 'text-gray-600 dark:text-yellow-300/80'
-                      ),
-                currentDay && !isSelected && 'border-2 border-blue-500'
+                      )
             )}
         >
             <span className="text-xs font-medium mb-1 opacity-80">
